@@ -13,6 +13,7 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     // MARK: Properties
     var pokemonController: PokemonController?
     var pokemon: Pokemon?
+    var filteredData: [String]!
     
     // MARK: Outlets
     @IBOutlet weak var pokeSearchBar: UISearchBar!
@@ -23,12 +24,10 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var abilitiesLabel: UILabel!
     @IBOutlet weak var savePokemonButton: UIButton!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         pokeSearchBar.delegate = self
         updateViews()
-        
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -46,8 +45,6 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
                 }
             })
         })
-            
-        
     }
     
     @IBAction func savePokemon(_ sender: UIButton) {
@@ -57,8 +54,6 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
         navigationController?.popViewController(animated: true)
     }
     
-    
-
     func updateViews() {
         guard isViewLoaded,
             let pokemon = pokemon else {
@@ -83,5 +78,4 @@ class DetailViewController: UIViewController, UISearchBarDelegate {
             pokemonImage.isHidden = true
         }
     }
-
 }
